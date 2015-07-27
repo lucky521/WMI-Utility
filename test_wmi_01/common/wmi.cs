@@ -8,16 +8,15 @@ using System.Management; //wmi
 
 namespace test_wmi_01
 {
-    class wmi
+    class wmi_base
     {
     }
-
-
+    
     /* 
      * WMI - System Registry Provider
      * 
      */
-    public class RegistryOperate
+    public class RegistryOperate: wmi_base
     {
         public ConnectionOptions ops;
         public ManagementScope scope;
@@ -124,7 +123,7 @@ namespace test_wmi_01
 
     }
 
-    public class InstallerCheck
+    public class InstallerCheck : wmi_base
     {
  
     }
