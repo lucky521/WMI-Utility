@@ -124,6 +124,11 @@ namespace test_wmi_01
 
     }
 
+    public class InstallerCheck
+    {
+ 
+    }
+
 
 
 

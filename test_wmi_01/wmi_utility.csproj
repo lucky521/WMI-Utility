@@ -66,6 +66,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="common\file_rx.cs" />
+    <Compile Include="common\UNCAccess.cs" />
     <Compile Include="common\wmi.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
