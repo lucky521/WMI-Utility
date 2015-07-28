@@ -30,7 +30,7 @@ namespace test_wmi_01
 
 
 
-            string my_password = "***";
+            string my_password = "******";
 
             
             //Test for RegistryOperate
@@ -48,13 +48,15 @@ namespace test_wmi_01
             ScpOperate.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
             */
 
-            /*
+            
             //Test for remote windows folder access
+            /*
             UNCAccess unc = new UNCAccess();
-                        
             int result = unc.RemoteAccess(@"\\10.117.172.204\c$", "luliu", "LIULUVIEW", my_password);
             System.Console.WriteLine(result);
+             */
 
+            /*
             string filename = "v4v-truststore.jks";
             result = unc.download_file(@"\\10.117.172.204\c$\ProgramData\VMware\vCenter Operations for View\conf\", "luliu", "LIULUVIEW", my_password, filename, @"E:\");
             System.Console.WriteLine(result);

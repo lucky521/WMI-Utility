@@ -132,9 +132,10 @@ namespace test_wmi_01
             iLastError = (int)returncode;
             return (int)returncode;
         }
-        catch
+        catch(Exception e)
         {
             iLastError = Marshal.GetLastWin32Error();
+            System.Console.WriteLine(e);
             return -1;
         }
     }
