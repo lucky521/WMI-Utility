@@ -10,6 +10,13 @@ using LPWSTR = System.String;
 using NET_API_STATUS = System.UInt32;
 
 
+/*
+ * Interface:   int RemoteAccess(string UNCPath, string User, string Domain, string Password)
+ *              int download_file(string UNCPath, string User, string Domain, string Password, string RemoteFilename, string LocalPath)
+ * 
+ */
+
+
 namespace test_wmi_01
 {
     public class UNCAccess
@@ -53,10 +60,35 @@ namespace test_wmi_01
     {
     }
 
-    public UNCAccess(string UNCPath, string User, string Domain, string Password)
+    ~UNCAccess()
     {
-        login(UNCPath, User, Domain, Password);
+        NetUseDelete();
     }
+
+    public int RemoteAccess(string @UNCPath, string User, string Domain, string Password)
+    {
+        return login(UNCPath, User, Domain, Password);
+    }
+
+    public int download_file(string @UNCPath, string User, string Domain, string Password, string RemoteFilename, string LocalPath)
+    {
+        try
+        {
+            UNCAccess unc = new UNCAccess();
+            unc.RemoteAccess(UNCPath, User, Domain, Password);
+            System.IO.File.Copy(@UNCPath + RemoteFilename, @LocalPath + RemoteFilename);
+            System.Console.WriteLine("Copy from remote windows succeed.");
+        }
+        catch (Exception e)
+        {
+            System.Console.WriteLine(e);
+            return -1;
+        }
+        return 0;
+    
+    }
+
+
 
     public int LastError
     {
@@ -71,7 +103,7 @@ namespace test_wmi_01
     /// Domain
     /// Password
     /// True if login was successful
-    public bool login(string UNCPath, string User, string Domain, string Password)
+    public int login(string UNCPath, string User, string Domain, string Password)
     {
         sUNCPath = UNCPath;
         sUser = User;
@@ -81,7 +113,7 @@ namespace test_wmi_01
     }
 
 
-    private bool NetUseWithCredentials()
+    private int NetUseWithCredentials()
     {
         uint returncode;
         try
@@ -96,14 +128,14 @@ namespace test_wmi_01
             useinfo.ui2_usecount = 1;
             uint paramErrorIndex;
             returncode = NetUseAdd(null, 2, ref useinfo, out paramErrorIndex);
-            System.Console.WriteLine("NEtUseAdd ReturnValue" + returncode);
+            System.Console.WriteLine("NEtUseAdd ReturnValue " + returncode);
             iLastError = (int)returncode;
-            return returncode == 0;
+            return (int)returncode;
         }
         catch
         {
             iLastError = Marshal.GetLastWin32Error();
-            return false;
+            return -1;
         }
     }
 

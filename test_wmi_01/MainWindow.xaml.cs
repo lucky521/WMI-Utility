@@ -28,6 +28,8 @@ namespace test_wmi_01
             System.Console.WriteLine("\n\n###########################################################");
             System.Console.WriteLine("Beigin!");
 
+            string my_password = "*****";
+
             /*
             //Test for RegistryOperate
             RegistryOperate rop = new RegistryOperate();
@@ -35,26 +37,19 @@ namespace test_wmi_01
             rop.list_installer();
 
             //Test for ScpOperate
-            ScpOperate.download_file("10.117.172.203", "root", @"*****", "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
+            ScpOperate.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
              */
 
             //Test for remote windows folder access
-            try
-            {
-                UNCAccess unc = new UNCAccess(@"\\10.117.172.204\c$", "luliu", "LIULUVIEW", @"*****");
+            UNCAccess unc = new UNCAccess();
 
-                string filename = "v4v-truststore.jks";
-                System.IO.File.Copy(@"\\10.117.172.204\c$\ProgramData\VMware\vCenter Operations for View\conf\" + filename, @"E:\" + filename);
-                System.Console.WriteLine("Copy from remote windows succeed.");
-            }
-            catch (Exception e)
-            {
-                System.Console.WriteLine(e);
-            }
+            
+            int result = unc.RemoteAccess(@"\\10.117.172.204\c$", "luliu", "LIULUVIEW", my_password);
+            System.Console.WriteLine(result);
 
-
-
-
+            string filename = "v4v-truststore.jks";
+            result = unc.download_file(@"\\10.117.172.204\c$\ProgramData\VMware\vCenter Operations for View\conf\", "luliu", "LIULUVIEW", my_password, filename, @"E:\");
+            System.Console.WriteLine(result);
 
 
             System.Console.WriteLine("End!");

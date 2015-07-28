@@ -8,7 +8,7 @@ using System.Management; //wmi
 
 namespace test_wmi_01
 {
-    class wmi_base
+    public class wmi_base
     {
     }
     
