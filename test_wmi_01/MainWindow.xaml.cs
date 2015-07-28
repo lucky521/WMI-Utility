@@ -26,30 +26,40 @@ namespace test_wmi_01
         {
             InitializeComponent();
             System.Console.WriteLine("\n\n###########################################################");
-            System.Console.WriteLine("Beigin!");
+            System.Console.WriteLine("Begin!");
 
-            string my_password = "*****";
 
-            /*
-            //Test for RegistryOperate
-            RegistryOperate rop = new RegistryOperate();
-            rop.read_registry();
-            rop.list_installer();
 
-            //Test for ScpOperate
-            ScpOperate.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
-             */
-
-            //Test for remote windows folder access
-            UNCAccess unc = new UNCAccess();
+            string my_password = "***";
 
             
+            //Test for RegistryOperate
+            /*
+            RegistryOperate rop = new RegistryOperate("10.117.172.202","luliu", my_password, "LIULUVIEW");
+            string data;
+            rop.read_registry((uint)(RegistryOperate.RegHive.HKEY_LOCAL_MACHINE),  @"SOFTWARE\Mcafee\vscore",  "newrtd", out data);
+            */
+
+            //InstallerCheck ich = new InstallerCheck("10.117.172.202", "luliu", my_password, "LIULUVIEW");
+            //System.Console.WriteLine(ich.list_installer());
+
+            /*
+            //Test for ScpOperate
+            ScpOperate.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
+            */
+
+            /*
+            //Test for remote windows folder access
+            UNCAccess unc = new UNCAccess();
+                        
             int result = unc.RemoteAccess(@"\\10.117.172.204\c$", "luliu", "LIULUVIEW", my_password);
             System.Console.WriteLine(result);
 
             string filename = "v4v-truststore.jks";
             result = unc.download_file(@"\\10.117.172.204\c$\ProgramData\VMware\vCenter Operations for View\conf\", "luliu", "LIULUVIEW", my_password, filename, @"E:\");
             System.Console.WriteLine(result);
+            */
+
 
 
             System.Console.WriteLine("End!");
