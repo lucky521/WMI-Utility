@@ -1,8 +1,10 @@
 # wmi_utility
 wmi operation
 
-##Registry Access
+## Windows Service
 
-##Windows Program Installer
+## Registry Access
+
+## Windows Program Installer
 
 
