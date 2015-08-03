@@ -121,9 +121,9 @@ namespace test_wmi_01
             {
                 try
                 {
-                    //ObjectGetOptions obj = new ObjectGetOptions(null, System.TimeSpan.MaxValue, true);  // 对象接收选项
+                    //ObjectGetOptions obj = new ObjectGetOptions(null, System.TimeSpan.MaxValue, true); 
                     ManagementPath mypath = new ManagementPath(wmi_name); //StdRegProv class contains methods that manipulate system registry keys and values
-                    ManagementClass mgmtclass = new ManagementClass(scope, mypath, null);  // 生成远程的StdRegProv对象
+                    ManagementClass mgmtclass = new ManagementClass(scope, mypath, null);  
 
 
                     ManagementBaseObject inParams = mgmtclass.GetMethodParameters(wmi_method_name);

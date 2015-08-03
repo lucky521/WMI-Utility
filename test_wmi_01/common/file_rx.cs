@@ -16,7 +16,7 @@ using WinSCP;  // from winscpnet
 
 namespace test_wmi_01
 {
-    class ScpOperate
+    public class ScpOperate
     {
         public static int download_file(string @hostname, string @username, string @password, string @filename, string @remotepath, string @localpath)
         {

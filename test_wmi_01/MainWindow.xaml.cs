@@ -30,24 +30,28 @@ namespace test_wmi_01
 
 
 
-            string my_password = "******";
+            string my_password = "*****";
 
             
             //Test for RegistryOperate
-            /*
-            RegistryOperate rop = new RegistryOperate("10.117.172.202","luliu", my_password, "LIULUVIEW");
+            
+            RegistryOperate rop = new RegistryOperate("10.117.172.201","luliu", my_password, "LIULUVIEW");
             string data;
-            rop.read_registry((uint)(RegistryOperate.RegHive.HKEY_LOCAL_MACHINE),  @"SOFTWARE\Mcafee\vscore",  "newrtd", out data);
-            */
+            //rop.read_registry((uint)(RegistryOperate.RegHive.HKEY_LOCAL_MACHINE),  @"SOFTWARE\vmware, inc.\vcenter operations for view\broker agent",  "liulu", out data);
+            rop.read_registry((uint)(RegistryOperate.RegHive.HKEY_LOCAL_MACHINE), @"SOFTWARE\Teradici", "liulute", out data);
+            System.Console.WriteLine(data);
 
+            //Test for InstallerCheck
             //InstallerCheck ich = new InstallerCheck("10.117.172.202", "luliu", my_password, "LIULUVIEW");
             //System.Console.WriteLine(ich.list_installer());
 
-            /*
-            //Test for ScpOperate
-            ScpOperate.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
-            */
 
+            
+            //Test for ScpOperate
+            //ScpOperate.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
+            //ScpOperate scp = new ScpOperate();
+            //int x = ScpOperate.download_file("10.117.172.203", "root", "Vca$hc0w", "agent-config.xml", "/usr/lib/vmware-vcops/tomcat-web-app/webapps/ui/ContentPack/V4V/conf/", "c:\\");
+            //System.Console.WriteLine("download_file return value:" + x);
             
             //Test for remote windows folder access
             /*
