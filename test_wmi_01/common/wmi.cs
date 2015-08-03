@@ -199,6 +199,78 @@ namespace test_wmi_01
  
     }
 
+    public class CheckService : wmi_base
+    {
+        public string servicename;
+
+        public CheckService(string address, string username, string password, string domain, string servicename) : base(address, username, password, domain)
+        {
+            this.servicename = servicename;
+        }
+
+
+        ~CheckService()
+        {
+
+        }
+
+        public string check()
+        {
+            try
+            {
+                ConnectionOptions connection = new ConnectionOptions();
+                connection.Username = username;
+                connection.Password = password;
+                connection.Authority = "ntlmdomain:" + domain;
+
+                ManagementScope scope = new ManagementScope(
+                    "\\\\" + address +"\\root\\CIMV2", connection);
+                scope.Connect();
+
+                ObjectQuery query = new ObjectQuery(
+                    "SELECT * FROM Win32_Service");
+
+                ManagementObjectSearcher searcher =
+                    new ManagementObjectSearcher(scope, query);
+
+                foreach (ManagementObject queryObj in searcher.Get())
+                {
+                    if (queryObj["Name"].ToString() == servicename)
+                    {
+                        /*
+                        Console.WriteLine("-----------------------------------");
+                        Console.WriteLine("Win32_Service instance");
+                        Console.WriteLine("-----------------------------------");
+                        Console.WriteLine("Caption: {0}", queryObj["Caption"]);
+                        Console.WriteLine("Description: {0}", queryObj["Description"]);
+                        Console.WriteLine("Name: {0}", queryObj["Name"]);
+                        Console.WriteLine("PathName: {0}", queryObj["PathName"]);
+                        Console.WriteLine("State: {0}", queryObj["State"]);
+                        Console.WriteLine("Status: {0}", queryObj["Status"]);
+                         */
+                        return queryObj["State"].ToString();
+                    }
+
+                }
+
+            }
+            catch (ManagementException err)
+            {
+                Console.WriteLine("An error occured while querying for WMI data: "
+                    + err.Message);
+                return err.ToString();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return e.ToString();
+            }
+
+            return "Service Not Exist";
+        }
+
+    }
+
 
     
 

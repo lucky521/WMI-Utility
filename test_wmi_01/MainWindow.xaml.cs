@@ -28,19 +28,22 @@ namespace test_wmi_01
             System.Console.WriteLine("\n\n###########################################################");
             System.Console.WriteLine("Begin!");
 
-
-
-            string my_password = "*****";
-
             
+            string my_password = "****";
+
+            CheckService cs = new CheckService("10.117.172.201", "luliu", my_password, "LIULUVIEW", "v4v_broker_agent");
+            string result = cs.check();
+            Console.WriteLine("State of The Service is "  + result);
+
+
             //Test for RegistryOperate
-            
+            /*
             RegistryOperate rop = new RegistryOperate("10.117.172.201","luliu", my_password, "LIULUVIEW");
             string data;
             //rop.read_registry((uint)(RegistryOperate.RegHive.HKEY_LOCAL_MACHINE),  @"SOFTWARE\vmware, inc.\vcenter operations for view\broker agent",  "liulu", out data);
             rop.read_registry((uint)(RegistryOperate.RegHive.HKEY_LOCAL_MACHINE), @"SOFTWARE\Teradici", "liulute", out data);
             System.Console.WriteLine(data);
-
+            */
             //Test for InstallerCheck
             //InstallerCheck ich = new InstallerCheck("10.117.172.202", "luliu", my_password, "LIULUVIEW");
             //System.Console.WriteLine(ich.list_installer());
