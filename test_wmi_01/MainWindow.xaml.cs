@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-
 namespace test_wmi_01
 {
     /// <summary>
@@ -31,10 +30,13 @@ namespace test_wmi_01
             
             string my_password = "****";
 
-            CheckService cs = new CheckService("10.117.172.201", "luliu", my_password, "LIULUVIEW", "v4v_broker_agent");
-            string result = cs.check();
-            Console.WriteLine("State of The Service is "  + result);
 
+            //Test for CheckService
+            /*
+            CheckService cs = new CheckService("10.117.172.201", "luliu", my_password, "LIULUVIEW");
+            string result = cs.check_service("v4v_broker_agent");
+            Console.WriteLine("State of The Service is "  + result);
+            */
 
             //Test for RegistryOperate
             /*

@@ -10,6 +10,7 @@ using System.Management; //wmi
 /*
  * Interface:   int read_registry(string key, string subkey, string value, out string data)
  *              string list_installer()
+ *              string 
  *              
  * 
  */
@@ -201,11 +202,11 @@ namespace test_wmi_01
 
     public class CheckService : wmi_base
     {
-        public string servicename;
+        //public string servicename;
 
-        public CheckService(string address, string username, string password, string domain, string servicename) : base(address, username, password, domain)
+        public CheckService(string address, string username, string password, string domain) : base(address, username, password, domain)
         {
-            this.servicename = servicename;
+           
         }
 
 
@@ -214,8 +215,9 @@ namespace test_wmi_01
 
         }
 
-        public string check()
+        public string check_service(string servicename)
         {
+            //this.servicename = servicename;
             try
             {
                 ConnectionOptions connection = new ConnectionOptions();
@@ -271,7 +273,8 @@ namespace test_wmi_01
 
     }
 
-
     
+    
+
 
 }
