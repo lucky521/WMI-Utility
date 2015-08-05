@@ -1,2 +1,5 @@
+language: csharp
+solution: test_wmi_01.sln
 
 
+# http://docs.travis-ci.com/user/languages/csharp/
