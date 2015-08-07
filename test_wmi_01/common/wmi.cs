@@ -8,9 +8,10 @@ using System.Management; //wmi
 
 
 /*
- * Interface:   int read_registry(string key, string subkey, string value, out string data)
+ * Interface:   
+ *              int read_registry(string key, string subkey, string value, out string data)
  *              string list_installer()
- *              string 
+ *              string check_service()
  *              
  * 
  */

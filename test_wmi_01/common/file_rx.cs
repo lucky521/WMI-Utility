@@ -9,7 +9,8 @@ using System.IO;
 using WinSCP;  // from winscpnet
 
 /*
- * Interface:  int download_file(string @hostname, string @username, string @password, string @filename, string @remotepath, string @localpath)
+ * Interface:  
+ *      int download_file(string @hostname, string @username, string @password, string @filename, string @remotepath, string @localpath)
  * 
  */
 

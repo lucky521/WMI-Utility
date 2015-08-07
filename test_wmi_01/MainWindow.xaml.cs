@@ -38,6 +38,8 @@ namespace test_wmi_01
             Console.WriteLine("State of The Service is "  + result);
             */
 
+
+
             //Test for RegistryOperate
             /*
             RegistryOperate rop = new RegistryOperate("10.117.172.201","luliu", my_password, "LIULUVIEW");
@@ -53,11 +55,14 @@ namespace test_wmi_01
 
             
             //Test for ScpOperate
-            //ScpOperate.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
-            //ScpOperate scp = new ScpOperate();
-            //int x = ScpOperate.download_file("10.117.172.203", "root", "Vca$hc0w", "agent-config.xml", "/usr/lib/vmware-vcops/tomcat-web-app/webapps/ui/ContentPack/V4V/conf/", "c:\\");
-            //System.Console.WriteLine("download_file return value:" + x);
-            
+            /*
+            ScpOperate.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
+            ScpOperate scp = new ScpOperate();
+            int x = ScpOperate.download_file("10.117.172.203", "root", "Vca$hc0w", "agent-config.xml", "/usr/lib/vmware-vcops/tomcat-web-app/webapps/ui/ContentPack/V4V/conf/", "c:\\");
+            System.Console.WriteLine("download_file return value:" + x);
+            */
+
+
             //Test for remote windows folder access
             /*
             UNCAccess unc = new UNCAccess();
@@ -65,6 +70,7 @@ namespace test_wmi_01
             System.Console.WriteLine(result);
              */
 
+            //Test for getting remote windows file 
             /*
             string filename = "v4v-truststore.jks";
             result = unc.download_file(@"\\10.117.172.204\c$\ProgramData\VMware\vCenter Operations for View\conf\", "luliu", "LIULUVIEW", my_password, filename, @"E:\");

@@ -11,7 +11,8 @@ using NET_API_STATUS = System.UInt32;
 
 
 /*
- * Interface:   int RemoteAccess(string UNCPath, string User, string Domain, string Password)
+ * Interface:   
+ *              int RemoteAccess(string UNCPath, string User, string Domain, string Password)
  *              int download_file(string UNCPath, string User, string Domain, string Password, string RemoteFilename, string LocalPath)
  * 
  */
