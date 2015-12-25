@@ -24,20 +24,18 @@ namespace test_wmi_01
         public MainWindow()
         {
             InitializeComponent();
-            System.Console.WriteLine("\n\n###########################################################");
-            System.Console.WriteLine("Begin!");
-
-            
             string my_password = "****";
 
 
-            //Test for CheckService
+            System.Console.WriteLine("\n\n###########################################################");
+            System.Console.WriteLine("Begin!");
+
+            //Test for ServiceCheck
             /*
-            CheckService cs = new CheckService("10.117.172.201", "luliu", my_password, "LIULUVIEW");
+            ServiceCheck cs = new ServiceCheck("10.117.172.201", "luliu", my_password, "LIULUVIEW");
             string result = cs.check_service("v4v_broker_agent");
             Console.WriteLine("State of The Service is "  + result);
             */
-
 
 
             //Test for RegistryOperate
@@ -48,24 +46,25 @@ namespace test_wmi_01
             rop.read_registry((uint)(RegistryOperate.RegHive.HKEY_LOCAL_MACHINE), @"SOFTWARE\Teradici", "liulute", out data);
             System.Console.WriteLine(data);
             */
+
             //Test for InstallerCheck
             //InstallerCheck ich = new InstallerCheck("10.117.172.202", "luliu", my_password, "LIULUVIEW");
             //System.Console.WriteLine(ich.list_installer());
 
 
-            
-            //Test for ScpOperate
+
+            //Test for LinAccess
             /*
-            ScpOperate.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
-            ScpOperate scp = new ScpOperate();
-            int x = ScpOperate.download_file("10.117.172.203", "root", "Vca$hc0w", "agent-config.xml", "/usr/lib/vmware-vcops/tomcat-web-app/webapps/ui/ContentPack/V4V/conf/", "c:\\");
+            LinAccess.download_file("10.117.172.203", "root", my_password, "remote_luliu.log", @"/storage/vcops/log/adapters/V4VAdapter/", @"e:\");
+            LinAccess scp = new LinAccess();
+            int x = LinAccess.download_file("10.117.172.203", "root", my_password, "agent-config.xml", "/usr/lib/vmware-vcops/tomcat-web-app/webapps/ui/ContentPack/V4V/conf/", "c:\\");
             System.Console.WriteLine("download_file return value:" + x);
             */
 
 
             //Test for remote windows folder access
             /*
-            UNCAccess unc = new UNCAccess();
+            WinAccess unc = new WinAccess();
             int result = unc.RemoteAccess(@"\\10.117.172.204\c$", "luliu", "LIULUVIEW", my_password);
             System.Console.WriteLine(result);
              */
@@ -76,7 +75,6 @@ namespace test_wmi_01
             result = unc.download_file(@"\\10.117.172.204\c$\ProgramData\VMware\vCenter Operations for View\conf\", "luliu", "LIULUVIEW", my_password, filename, @"E:\");
             System.Console.WriteLine(result);
             */
-
 
 
             System.Console.WriteLine("End!");

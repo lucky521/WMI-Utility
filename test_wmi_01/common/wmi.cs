@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 using System.Management; //wmi
 
 
-
 /*
  * Interface:   
  *              int read_registry(string key, string subkey, string value, out string data)
  *              string list_installer()
  *              string check_service()
- *              
- * 
  */
 
 namespace test_wmi_01
@@ -201,17 +198,22 @@ namespace test_wmi_01
  
     }
 
-    public class CheckService : wmi_base
+    /* 
+     * WMI - System Service Provider
+     * 
+     */
+
+    public class ServiceCheck : wmi_base
     {
         //public string servicename;
 
-        public CheckService(string address, string username, string password, string domain) : base(address, username, password, domain)
+        public ServiceCheck(string address, string username, string password, string domain) : base(address, username, password, domain)
         {
            
         }
 
 
-        ~CheckService()
+        ~ServiceCheck()
         {
 
         }
